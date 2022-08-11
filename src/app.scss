@@ -1,6 +1,9 @@
 h1 {
+  color: blue;
   font-size: 2em;
+  transition: all .3s;
   &:hover {
     color: red;
+    transform: translateX(50px);
   }
 }

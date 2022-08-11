@@ -26,6 +26,7 @@ module.exports = {
           // 下から実行されるため、最初に実行したいものを末尾に記述
           'style-loader',
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ]
       }

@@ -63,3 +63,22 @@ webpack.config.js
 バンドルするには.scssファイルを`app.js`に読み込む必要がある
 
 実際にバンドルされた情報がブラウザに配信され、その後style-loaderを通してstyleタグとしてHTMLファイルにインジェクト（注入）される
+
+## PostCSSでより実践的なCSSローダーを作成
+PostCSSとはCSSを操作するためのJavaScriptプラグインで、PostCSSの機能を使うとベンダープレフィックスの追加や構文チェック、圧縮などを行ってくれる
+
+`autoprefixer`というプラグインではベンダープレフィックスを自動で付与してくれる
+
+`postcss.config.js`という設定ファイルが必要
+```js
+module.exports = {
+  plugins: [
+    // autoprefixerを使用するよう設定
+    require('autoprefixer')
+  ] 
+};
+```
+
+対応するブラウザリストの設定ファイル（`.browserlistrc`）を追加
+
+## ファイルローダーで画像を扱う
