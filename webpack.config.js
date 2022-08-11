@@ -32,6 +32,16 @@ module.exports = {
           'postcss-loader',
           'sass-loader'
         ]
+      },
+      {
+        // Webpack5からはfile-loaderはインストール不要になったので、loaderの設定はしない
+        test: /\.(jpg?g|gif|png|svg|woff2?|tff|eot)$/,
+        generator: {
+          // 出力先の指定
+          filename: './images/[contenthash].[ext]'
+        },
+        // アセットモジュールタイプの指定（個別にファイルを生成して、そのURLを出力する
+        type: 'asset/resource'
       }
     ]
   },

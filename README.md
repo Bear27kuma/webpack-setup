@@ -81,4 +81,20 @@ module.exports = {
 
 対応するブラウザリストの設定ファイル（`.browserlistrc`）を追加
 
-## ファイルローダーで画像を扱う
+## 画像などのアセットファイルをバンドルする
+画像などのファイルに関しては以前は`file-loader`をインストールしてバンドル設定を行わないと、画像を読み込んでいる場合はエラーになったが、Webpack5からは標準でAsset Modulesという機能が追加されて対応するようになったので、インストール不要になった
+
+画像のURLはデフォルトではハッシュ値になるので、buildして吐き出される画像の名前が元の名前とは異なるものになる。
+
+```js
+{
+  // Webpack5からはfile-loaderはインストール不要になったので、loaderの設定はしない
+  test: /\.(jpg?g|gif|png|svg|woff2?|tff|eot)$/,
+  generator: {
+    // 出力先の指定
+    filename: './images/[contenthash].[ext]]'
+  },
+  // アセットモジュールタイプの指定（個別にファイルを生成して、そのURLを出力する
+  type: 'asset/resource'
+}
+```
