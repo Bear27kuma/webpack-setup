@@ -1,4 +1,5 @@
 const path = require('path');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   // バンドルするモード
@@ -19,9 +20,11 @@ module.exports = {
   module: {
     rules: [
       {
+        // preがついていないloaderより早く実行される
+        // enforce: 'pre',
         // 対象となる拡張子
-        test: /\.scss$/,
-        // どのloaderを使用するか
+        test: /\.(sass|scss)$/,
+        // 使用するloader
         use: [
           // 下から実行されるため、最初に実行したいものを末尾に記述
           'style-loader',
@@ -31,5 +34,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new StylelintPlugin({
+      fix: true
+    })
+  ]
 };

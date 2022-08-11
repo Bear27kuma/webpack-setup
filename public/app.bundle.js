@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "h1 {\n  color: blue;\n  font-size: 2em;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\nh1:hover {\n  color: red;\n  -webkit-transform: translateX(50px);\n          transform: translateX(50px);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "h1 {\n  font-size: 2em;\n  color: blue;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\nh1:hover {\n  color: red;\n  -webkit-transform: translateX(50px);\n          transform: translateX(50px);\n}", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
