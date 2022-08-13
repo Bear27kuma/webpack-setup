@@ -24,11 +24,14 @@ module.exports = {
         test: /\.js$/,
         // 対象外にしたいフォルダ・ファイル
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: [
+          'babel-loader',
+          'eslint-loader'
+        ]
       },
       {
         // preがついていないloaderより早く実行される
-        // enforce: 'pre',
+        enforce: 'pre',
         // 対象となる拡張子
         test: /\.(sass|scss)$/,
         // 使用するloader

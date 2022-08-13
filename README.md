@@ -132,3 +132,33 @@ babelの設定は`.babelrc`にJSON形式で記述するか、`babel.config.js`�
 オプションの`target`部分は[browserlist](https://github.com/browserslist/browserslist)を参照
 
 古いブラウザが持っていない機能を補ってくれる`core-js`モジュールと`regenerator-runtime`をインストールする
+
+
+## ESLintを連携してJavaScriptの文法をチェックする
+ESLintとWebpackを連携させるために、`eslint`、`eslint-loader`、`babel-eslint`をインストールする
+
+別途ESLintの設定ファイル（今回は`.eslintrc.js`）を作成して、そちらにESLintの設定を記述していく
+
+ESLintの設定で以下がないと、ブラウザで使用できる関数など（`console`や`alert`など）が引っかかってエラーになってしまう
+
+```js
+env: {
+  // ブラウザ用のグローバル変数（変数）を一括でglobalsプロパティに登録する
+  browser: true
+}
+```
+
+
+Webpackとの連携はloaderの`use`設定に追加するでOK
+
+```js
+{
+  test: /\.js$/,
+  // 対象外にしたいフォルダ・ファイル
+  exclude: /node_modules/,
+  use: [
+    'babel-loader',
+    'eslint-loader'
+  ]
+}
+```
