@@ -126,4 +126,9 @@ Outputのテンプレートに使えるハッシュは以下の3つ
 
 `babel-loader`、`@babel/core`、`@babel/preset-env`のパッケージをインストールする
 
-babelの設定は`.babelrc`にJSON形式で記述する
+## Babelを詳しく設定する
+babelの設定は`.babelrc`にJSON形式で記述するか、`babel.config.js`でJS形式で記述する
+
+オプションの`target`部分は[browserlist](https://github.com/browserslist/browserslist)を参照
+
+古いブラウザが持っていない機能を補ってくれる`core-js`モジュールと`regenerator-runtime`をインストールする
