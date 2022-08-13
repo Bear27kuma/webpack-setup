@@ -1,5 +1,5 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
@@ -7,19 +7,25 @@ module.exports = {
   mode: 'development',
   devtool: false,
   // 全てのファイルの基準となるファイル
-  // entry: { app: './src/app.js' },
+  entry: { app: './src/app.js' },
   // 複数の指定も可能
-  entry: {
-    app: './src/app.js',
-    sub: './src/sub.js'
-  },
+  // entry: {
+  //   app: './src/app.js',
+  //   sub: './src/sub.js'
+  // },
   // 出力先フォルダとファイル名
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        // 対象外にしたいフォルダ・ファイル
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
       {
         // preがついていないloaderより早く実行される
         // enforce: 'pre',
@@ -28,8 +34,8 @@ module.exports = {
         // 使用するloader
         use: [
           // 下から実行されるため、最初に実行したいものを末尾に記述
-          // 'style-loader',
-          MiniCssExtractPlugin.loader,
+          'style-loader',
+          // MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
           'sass-loader'
@@ -48,9 +54,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash].css'
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].mini.css'
+    // }),
     // Stylelintの--fixを実行する
     new StylelintPlugin({
       fix: true

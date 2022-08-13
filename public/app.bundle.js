@@ -1,6 +1,16 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/sub.js":
+/*!********************!*\
+  !*** ./src/sub.js ***!
+  \********************/
+/***/ (function() {
+
+console.log('This is a sub js file.');
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/app.scss":
 /*!*********************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/app.scss ***!
@@ -560,17 +570,6 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./src/sub.js":
-/*!********************!*\
-  !*** ./src/sub.js ***!
-  \********************/
-/***/ (function() {
-
-console.log('This is a sub js file.');
-
-
-/***/ }),
-
 /***/ "./src/images/favicon.png":
 /*!********************************!*\
   !*** ./src/images/favicon.png ***!
@@ -730,8 +729,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log('This is a main js file.');
+var init = function init() {
+  console.log('This is a main js file.');
+};
 
+init();
 }();
 /******/ })()
 ;
