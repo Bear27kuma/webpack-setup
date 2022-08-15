@@ -5884,6 +5884,9 @@ var init = /*#__PURE__*/function () {
             return asyncFn();
 
           case 3:
+            g = 0;
+
+          case 4:
           case "end":
             return _context.stop();
         }

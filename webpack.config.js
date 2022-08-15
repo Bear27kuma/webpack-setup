@@ -21,13 +21,20 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
         test: /\.js$/,
         // 対象外にしたいフォルダ・ファイル
         exclude: /node_modules/,
-        use: [
-          'babel-loader',
-          'eslint-loader'
-        ]
+        loader: 'eslint-loader',
+        options: {
+          // --fixオプションを使用する
+          fix: true
+        }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
       },
       {
         // preがついていないloaderより早く実行される
@@ -49,6 +56,7 @@ module.exports = {
         test: /\.(jpg?g|gif|png|svg|woff2?|tff|eot)$/,
         generator: {
           // 出力先の指定
+          /** @see https://webpack.js.org/configuration/output/#template-strings */
           filename: './images/[contenthash].[ext]'
         },
         // アセットモジュールタイプの指定（個別にファイルを生成して、そのURLを出力する
