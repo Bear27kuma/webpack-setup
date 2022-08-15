@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // バンドルするモード
@@ -71,6 +72,12 @@ module.exports = {
     // Stylelintの--fixを実行する
     new StylelintPlugin({
       fix: true
+    }),
+    new HtmlWebpackPlugin({
+      // 対象ファイル
+      template: './src/index.html',
+      // インジェクトするタグ
+      inject: 'body'
     })
   ]
 };

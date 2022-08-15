@@ -210,3 +210,19 @@ plugins: [
   })
 ]
 ```
+
+## HTMLにスクリプトタグを自動挿入する
+バンドルされたファイルにハッシュ値が入っていたりする場合、毎回読み込みのファイル名を更新するのは大変
+
+`html-webpack-plugin`でこちらを実現することができる
+
+```js
+plugins: [
+  new HtmlWebpackPlugin({
+    // 対象ファイル
+    template: './src/index.html',
+    // インジェクトするタグ
+    inject: 'body'
+  })
+]
+```
