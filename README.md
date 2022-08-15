@@ -197,3 +197,16 @@ module.exports = {
 ```
 
 設定ファイルの記述が大変な場合は`eslint --init`コマンドで、対話形式で設定していくことができる
+
+## CSSファイルを分離させる
+`mini-css-extract-plugin`を使用すると、JSファイルとしてバンドルさせるスタイルファイルが分離して出力される
+
+メリットとしては、CSSファイルに変更がない場合は画面の初期表示のキャッシュによるパフォーマンスが向上するので、商用環境では分離した方が良い
+
+```js
+plugins: [
+  new MiniCssExtractPlugin({
+    filename: '[name].css'
+  })
+]
+```

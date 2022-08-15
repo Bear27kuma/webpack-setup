@@ -1,5 +1,5 @@
 const path = require('path');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
@@ -44,8 +44,8 @@ module.exports = {
         // 使用するloader
         use: [
           // 下から実行されるため、最初に実行したいものを末尾に記述
-          'style-loader',
-          // MiniCssExtractPlugin.loader,
+          // 'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
           'sass-loader'
@@ -65,9 +65,9 @@ module.exports = {
     ]
   },
   plugins: [
-    // new MiniCssExtractPlugin({
-    //   filename: '[name].mini.css'
-    // }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
     // Stylelintの--fixを実行する
     new StylelintPlugin({
       fix: true
