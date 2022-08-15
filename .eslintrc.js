@@ -9,6 +9,7 @@ module.exports = {
     es2021: true
   },
   // ESLintのおすすめの初期設定が反映される（他にもairbnbやgoogleの推奨設定がある）
+  // TODO:ルールを変更する
   extends: 'eslint:recommended',
   // ESLintを処理するプロセッサの指定
   parser: 'babel-eslint',

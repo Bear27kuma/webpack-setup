@@ -45,6 +45,7 @@ module.exports = {
         // 使用するloader
         use: [
           // 下から実行されるため、最初に実行したいものを末尾に記述
+          // TODO:Webpack5ではstyle-loaderが不要かもしれない
           // 'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
@@ -62,6 +63,10 @@ module.exports = {
         },
         // アセットモジュールタイプの指定（個別にファイルを生成して、そのURLを出力する
         type: 'asset/resource'
+      },
+      {
+        test: /\.html$/,
+        use: ['html-loader']
       }
     ]
   },

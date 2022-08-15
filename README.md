@@ -226,3 +226,16 @@ plugins: [
   })
 ]
 ```
+
+## HTMLファイルで読み込んだ画像ファイルをJSファイルにバンドルする
+HTML側でもimgタグで画像を読み込むので、CSS同様に`html-loader`を使ってバンドルする
+
+```js
+{
+  test: /\.html$/,
+  use: ['html-loader']
+}
+```
+
+
+`html-loader`の設定だけでなく、`plugins`に`html-webpack-plugin`の設定を入れておかないと画像ファイルがバンドルされない
