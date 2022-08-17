@@ -16,7 +16,7 @@
 実行モードは`development`と`production`があるが、`development`にするとデバッグがしやすいように圧縮されずにバンドルされる
 
 ## webpackの設定ファイル
-通常は毎回コマンドを叩くわけにもいかないので、`webpack.config.js`を作成して、そちらにバンドルに関する設定を記述する
+通常は毎回コマンドを叩くわけにもいかないので、`webpack.common.js`を作成して、そちらにバンドルに関する設定を記述する
 こちらに記載した設定を`webpack`コマンドを実行した際に自動的に読み込んでバンドルしてくれるようになる
 
 Node環境なので、CommonJSの`module.exports`を使ってエクスポートする
@@ -39,7 +39,7 @@ Node環境なので、CommonJSの`module.exports`を使ってエクスポート�
 | css-loader | CSSファイルをJSモジュール用に変換する |
 | style-loader | CSSをstyleタグでHTMLに埋め込む |
 
-webpack.config.js
+webpack.common.js
 ```js
 {
   module: {
@@ -239,3 +239,33 @@ HTML側でもimgタグで画像を読み込むので、CSS同様に`html-loader`
 
 
 `html-loader`の設定だけでなく、`plugins`に`html-webpack-plugin`の設定を入れておかないと画像ファイルがバンドルされない
+
+## 商用ファイルと開発用ファイルを分離する
+商用ファイルと開発用ファイルでWebpackの設定ファイルを分離させる
+
+分割する理由としては、商用はミニファイなどのパフォーマンスの最適化を行う必要があり、開発用は効率重視やデバッグのしやすさで設定するのが良い
+
+共通の設定ファイルを`webpack.common.js`、開発用を`webpack.dev.js`、商用を`webpack.prod.js`として、`webpack-merge`プラグインを使用してWebpackの設定をマージさせる
+
+環境によって実行するコマンドが変わってくるので、`package.json`の`scripts`に登録する
+
+```json
+{
+  "scripts": {
+    "dev": "webpack --config ./webpack.dev.js",
+    "build": "webpack --config ./webpack.prod.js"
+  }
+}
+```
+
+出力先フォルダを一度クリアするコマンドも用意しておくことで、毎回ファイルを削除する必要がなくなる（`rimraf`パッケージをインストール）
+
+```json
+{
+  "scripts": {
+    "cleanup": "rimraf ./public",
+    "dev": "npm run cleanup && webpack --config ./webpack.dev.js",
+    "build": "npm run cleanup && webpack --config ./webpack.prod.js"
+  }
+}
+```

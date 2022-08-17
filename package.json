@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "stylelint": "stylelint --fix 'src/**/*.{css,scss}'",
-    "lint-webpack": "npm run stylelint && webpack",
-    "webpack": "webpack",
-    "webpack-prod": "webpack --mode production"
+    "lint": "stylelint --fix 'src/**/*.{css,scss}'",
+    "lint-dev": "npm run stylelint && npm run dev",
+    "lint-build": "npm run stylelint && npm run build",
+    "cleanup": "rimraf ./public",
+    "dev": "npm run cleanup && webpack --config ./webpack.dev.js",
+    "build": "npm run cleanup && webpack --config ./webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -38,12 +40,14 @@
     "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.1",
     "regenerator-runtime": "^0.13.9",
+    "rimraf": "^3.0.2",
     "sass": "^1.54.4",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
     "stylelint": "^14.10.0",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard-scss": "^5.0.0",
-    "stylelint-webpack-plugin": "^3.3.0"
+    "stylelint-webpack-plugin": "^3.3.0",
+    "webpack-merge": "^5.8.0"
   }
 }

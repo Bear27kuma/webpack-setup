@@ -1,12 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-  // バンドルするモード
-  mode: 'development',
-  devtool: false,
+module.exports = ({ outputFile, assetFile }) => ({
   // 全てのファイルの基準となるファイル
   entry: { app: './src/app.js' },
   // 複数の指定も可能
@@ -17,7 +13,7 @@ module.exports = {
   // 出力先フォルダとファイル名
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: '[name].bundle.js'
+    filename: `${outputFile}.js`
   },
   module: {
     rules: [
@@ -45,8 +41,6 @@ module.exports = {
         // 使用するloader
         use: [
           // 下から実行されるため、最初に実行したいものを末尾に記述
-          // TODO:Webpack5ではstyle-loaderが不要かもしれない
-          // 'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
@@ -59,7 +53,7 @@ module.exports = {
         generator: {
           // 出力先の指定
           /** @see https://webpack.js.org/configuration/output/#template-strings */
-          filename: './images/[contenthash].[ext]'
+          filename: `./images/${assetFile}.[ext]`
         },
         // アセットモジュールタイプの指定（個別にファイルを生成して、そのURLを出力する
         type: 'asset/resource'
@@ -72,17 +66,11 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css'
+      filename: `${outputFile}.css`
     }),
     // Stylelintの--fixを実行する
     new StylelintPlugin({
       fix: true
-    }),
-    new HtmlWebpackPlugin({
-      // 対象ファイル
-      template: './src/index.html',
-      // インジェクトするタグ
-      inject: 'body'
     })
   ]
-};
+});
