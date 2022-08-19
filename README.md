@@ -269,3 +269,12 @@ HTML側でもimgタグで画像を読み込むので、CSS同様に`html-loader`
   }
 }
 ```
+
+## ファイルのミニファイ（最適化）を行う
+バンドルする際に`mode`を`production`にすることで自動的にミニファイ処理を行ってくれる
+
+JavaScriptのミニファイは`TeserPlugin`で自動的に行われるが、HTMLやCSSはミニファイされないので、自ら設定する必要がある
+
+プラグインの設定を行うと`TeserPlugin`の設定が上書きされてしまうため、合わせて設定する
+
+Webpack5からは`css-minimizer-webpack-plugin`が推奨されている
