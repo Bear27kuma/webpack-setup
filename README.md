@@ -278,3 +278,23 @@ JavaScriptのミニファイは`TeserPlugin`で自動的に行われるが、HTM
 プラグインの設定を行うと`TeserPlugin`の設定が上書きされてしまうため、合わせて設定する
 
 Webpack5からは`css-minimizer-webpack-plugin`が推奨されている
+
+## Webpackの開発サーバーを設定する
+Webpackの開発サーバーを使用するために`webpack-dev-server`をインストールする
+
+開発用設定ファイル（`webpack.dev.js`）
+
+```js
+devServer: {
+  // サーバーを立ち上げたいパス
+  contentBase: './public'
+}
+```
+
+`package.json`に実行用のコマンドを登録する
+
+```json
+{
+  "server": "webpack-dev-server --config ./webpack.dev.js"
+}
+```

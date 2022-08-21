@@ -7,3 +7,6 @@ services:
     tty: true
     volumes:
       - .:/app
+    ports:
+      - '8000:8000'
+    stdin_open: true

@@ -1,3 +1,4 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
 const commonConf = require('./webpack.common');
@@ -8,6 +9,19 @@ module.exports = () => merge(commonConf({ outputFile, assetFile }), {
   // バンドルするモード
   mode: 'development',
   devtool: 'source-map',
+  /** @see https://webpack.js.org/configuration/dev-server/ */
+  devServer: {
+    open: true,
+    // サーバーを立ち上げたいディレクトリ
+    static: path.join(__dirname, 'public'),
+    host: '0.0.0.0',
+    port: 8000,
+    hot: true,
+  },
+  watchOptions: {
+    ignored: /node_modules/,
+    poll: 1000
+  },
   plugins: [
     new HtmlWebpackPlugin({
       // 対象ファイル
