@@ -1,4 +1,5 @@
 const path = require('path');
+const { ProvidePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
@@ -71,6 +72,10 @@ module.exports = ({ outputFile, assetFile }) => ({
     // Stylelintの--fixを実行する
     new StylelintPlugin({
       fix: true
+    }),
+    new ProvidePlugin({
+      jQuery: 'jquery',
+      $: 'jquery'
     })
   ]
 });

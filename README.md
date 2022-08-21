@@ -298,3 +298,19 @@ devServer: {
   "server": "webpack-dev-server --config ./webpack.dev.js"
 }
 ```
+
+## 共通モジュールをプロバイダーに登録しよう
+複数のファイルで共通しているモジュールは`ProvidePlugin`を用いてまとめることができる
+
+```js
+const { ProvidePlugin } = require('webpack');
+
+plugins: [
+  new ProvidePlugin({
+    jQuery: 'jquery',
+    $: 'jquery'
+  })
+]
+```
+
+ESLintの`globals`と合わせて使うと良い
