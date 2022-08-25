@@ -21,13 +21,13 @@ module.exports = {
   },
   // 意図的にグローバルオブジェクトをESLint側に認識させる
   globals: {
+    utils: 'readonly',
     jQuery: 'readonly',  // writable
     $: 'readonly',
   },
   // 個別にカスタマイズされたチェックを行うための設定（eslint:recommendedの設定を上書きする）
   /** @see https://eslint.org/docs/latest/rules/ */
   rules: {
-    'no-undef': 'off',
     semi: ['error', 'always']
   }
 };

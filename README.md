@@ -314,3 +314,46 @@ plugins: [
 ```
 
 ESLintの`globals`と合わせて使うと良い
+
+## SplitChunksを使ってファイルを適切に分割する
+例えば、JavaScriptファイルの中にjQueryの記述が存在すると、そのファイルに何らかの変更が入るとjQueryも一緒にバンドルされてしまうう（jQuery自体に変更はないので毎回バンドルする必要なし）
+
+`optimization.splitChunks`を使用することでファイルの分割が実現できる
+
+```js
+optimization: {
+  splitChunks: {
+    // asyncだとダイナミックインポートのみ分割する
+    chunks: 'all',
+      minSize: 0,
+      cacheGroups: {
+      defaultVendor: {
+        // ファイル名を指定する
+        name: 'vendor',
+          // ファイルを分割するディレクトリを指定
+          test: /node_modules/,
+          // cacheGroupsは複数指定でき、priorityの大きいものから実行される
+          priority: -10,
+          reuseExistingChunk: true
+      },
+    default: false
+    }
+  },
+}
+```
+
+ダイナミックインポートは非同期で処理されるため、初期画面で使用しないモジュールなどに有効
+
+```js
+import('./app.scss');
+```
+
+プロジェクト内で共通で使用するモジュールなどを作成し（`utils`ディレクトリ）、そちらを別ファイルとして分割することもできる
+
+```js
+utils: {
+  name: 'utils',
+    test: /src[\\/]utils/,
+    reuseExistingChunk: true
+}
+```

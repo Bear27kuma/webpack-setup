@@ -14,7 +14,10 @@ module.exports = ({ outputFile, assetFile }) => ({
   // 出力先フォルダとファイル名
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: `${outputFile}.js`
+    filename: `${outputFile}.js`,
+    // 出力するファイル名の命名規則を指定する
+    chunkFilename: `${outputFile}.js`,
+
   },
   module: {
     rules: [
@@ -73,9 +76,37 @@ module.exports = ({ outputFile, assetFile }) => ({
     new StylelintPlugin({
       fix: true
     }),
+    // グローバルな値として設定する
     new ProvidePlugin({
       jQuery: 'jquery',
-      $: 'jquery'
+      $: 'jquery',
+      // ローカルディレクトリの指定は絶対パス
+      utils: [path.resolve(__dirname, 'src/utils'), 'default']
     })
-  ]
+  ],
+  /** @see https://webpack.js.org/plugins/split-chunks-plugin/ */
+  optimization: {
+    splitChunks: {
+      // asyncだとダイナミックインポートのみ分割する
+      chunks: 'all',
+      minSize: 0,
+      cacheGroups: {
+        defaultVendor: {
+          // ファイル名を指定する
+          name: 'vendor',
+          // ファイルを分割するディレクトリを指定
+          test: /node_modules/,
+          // cacheGroupsは複数指定でき、priorityの大きいものから実行される
+          priority: -10,
+          reuseExistingChunk: true
+        },
+        utils: {
+          name: 'utils',
+          test: /src[\\/]utils/,
+          reuseExistingChunk: true
+        },
+        default: false
+      }
+    },
+  }
 });
