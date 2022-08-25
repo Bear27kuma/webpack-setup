@@ -357,3 +357,21 @@ utils: {
     reuseExistingChunk: true
 }
 ```
+
+## Resolveを使った効率化
+相対パスが複雑になってくると、指定が大変になるので、そちらはResolveを使って効率化する
+
+```js
+resolve: {
+  // 特定の文字列にパスを紐づける
+  alias: {
+    '@scss': path.resolve(__dirname, 'src/scss/'),
+    '@images': path.resolve(__dirname, 'src/images/')
+  },
+  // 拡張子を省略する設定
+  extensions: ['.js', '.scss'],
+  // モジュールの検索対象
+  modules: [path.resolve(__dirname, 'src'), 'node_modules']
+}
+```
+

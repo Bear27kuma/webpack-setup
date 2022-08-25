@@ -5,11 +5,11 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = ({ outputFile, assetFile }) => ({
   // 全てのファイルの基準となるファイル
-  entry: { app: './src/app.js' },
+  entry: { app: './src/js/app.js' },
   // 複数の指定も可能
   // entry: {
-  //   app: './src/app.js',
-  //   sub: './src/sub.js'
+  //   app: './src/js/app.js',
+  //   sub: './src/js/sub.js'
   // },
   // 出力先フォルダとファイル名
   output: {
@@ -81,7 +81,7 @@ module.exports = ({ outputFile, assetFile }) => ({
       jQuery: 'jquery',
       $: 'jquery',
       // ローカルディレクトリの指定は絶対パス
-      utils: [path.resolve(__dirname, 'src/utils'), 'default']
+      utils: [path.resolve(__dirname, 'src/js/utils'), 'default']
     })
   ],
   /** @see https://webpack.js.org/plugins/split-chunks-plugin/ */
@@ -102,11 +102,22 @@ module.exports = ({ outputFile, assetFile }) => ({
         },
         utils: {
           name: 'utils',
-          test: /src[\\/]utils/,
+          test: /src[\\/]js[\\/]utils/,
           reuseExistingChunk: true
         },
         default: false
       }
     },
+  },
+  resolve: {
+    // 特定の文字列にパスを紐づける
+    alias: {
+      '@scss': path.resolve(__dirname, 'src/scss/'),
+      '@images': path.resolve(__dirname, 'src/images/')
+    },
+    // 拡張子を省略する設定
+    extensions: ['.js', '.scss'],
+    // モジュールの検索対象
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
   }
 });

@@ -1,10 +1,10 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/app.js":
-/*!********************!*\
-  !*** ./src/app.js ***!
-  \********************/
+/***/ "./src/js/app.js":
+/*!***********************!*\
+  !*** ./src/js/app.js ***!
+  \***********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45,11 +45,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_16__);
 /* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
 /* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _sub__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./sub */ "./src/sub.js");
-/* harmony import */ var _sub__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_sub__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var js_sub__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! js/sub */ "./src/js/sub.js");
+/* harmony import */ var js_sub__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(js_sub__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _scss_app__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @scss/app */ "./src/scss/app.scss");
 /* provided dependency */ var jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* provided dependency */ var utils = __webpack_require__(/*! ./src/utils */ "./src/utils/index.js")["default"];
+/* provided dependency */ var utils = __webpack_require__(/*! ./src/js/utils */ "./src/js/utils/index.js")["default"];
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 
@@ -134,24 +134,24 @@ init();
 
 /***/ }),
 
-/***/ "./src/sub.js":
-/*!********************!*\
-  !*** ./src/sub.js ***!
-  \********************/
+/***/ "./src/js/sub.js":
+/*!***********************!*\
+  !*** ./src/js/sub.js ***!
+  \***********************/
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
 /* provided dependency */ var jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* provided dependency */ var utils = __webpack_require__(/*! ./src/utils */ "./src/utils/index.js")["default"];
+/* provided dependency */ var utils = __webpack_require__(/*! ./src/js/utils */ "./src/js/utils/index.js")["default"];
 console.log('This is a sub js file.');
 jQuery();
 utils.log('hello from sub.js');
 
 /***/ }),
 
-/***/ "./src/app.scss":
-/*!**********************!*\
-  !*** ./src/app.scss ***!
-  \**********************/
+/***/ "./src/scss/app.scss":
+/*!***************************!*\
+  !*** ./src/scss/app.scss ***!
+  \***************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -337,7 +337,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["utils","vendor"], function() { return __webpack_require__("./src/app.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["utils","vendor"], function() { return __webpack_require__("./src/js/app.js"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
