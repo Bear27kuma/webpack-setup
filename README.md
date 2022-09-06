@@ -375,3 +375,19 @@ resolve: {
 }
 ```
 
+## VSCodeでResolveの自動補完を有効にする
+`jsconfig.json`ファイルを作成し、そちらにResolveの設定を記述しておくことでVSCodeで読み込んで自動補完してくれるようになる
+
+```json
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "@scss": ["scss"],
+            "scss": ["scss"],
+            "js": ["js"],
+            "images": ["images"]
+        }
+    }
+}
+```
