@@ -1,5 +1,9 @@
+
 import 'js/sub';
-import '@scss/app';
+setTimeout(() => {
+  import ('@scss/app');
+}, 2000);
+
 // import 'regenerator-runtime';
 // import 'core-js';
 

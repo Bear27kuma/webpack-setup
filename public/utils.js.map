@@ -1,1 +1,0 @@
-{"version":3,"file":"utils.js","mappings":";;;;;;;;;;AAAA,+DAAe;EACbA,GAAG,EAAE,aAASC,GAAT,EAAc;IACjBC,OAAO,CAACF,GAAR,CAAYC,GAAZ;EACD;AAHY,CAAf","sources":["webpack://webpack/./src/js/utils/index.js"],"sourcesContent":["export default {\n  log: function(str) {\n    console.log(str);\n  }\n};\n"],"names":["log","str","console"],"sourceRoot":""}

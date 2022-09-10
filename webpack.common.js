@@ -5,12 +5,12 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = ({ outputFile, assetFile }) => ({
   // 全てのファイルの基準となるファイル
-  entry: { app: './src/js/app.js' },
+  // entry: { app: './src/js/app.js' },
   // 複数の指定も可能
-  // entry: {
-  //   app: './src/js/app.js',
-  //   sub: './src/js/sub.js'
-  // },
+  entry: {
+    app: './src/js/app.js',
+    sub: './src/js/sub.js'
+  },
   // 出力先フォルダとファイル名
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -53,7 +53,7 @@ module.exports = ({ outputFile, assetFile }) => ({
       },
       {
         // Webpack5からはfile-loaderはインストール不要になったので、loaderの設定はしない
-        test: /\.(jpg?g|gif|png|svg|woff2?|tff|eot)$/,
+        test: /\.(jpg?g|gif|png|svg|woff2?|ttf|eot)$/,
         generator: {
           // 出力先の指定
           /** @see https://webpack.js.org/configuration/output/#template-strings */
@@ -80,7 +80,7 @@ module.exports = ({ outputFile, assetFile }) => ({
     new ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
-      // ローカルディレクトリの指定は絶対パス
+      // ローカルディレクトリの参照は絶対パスで指定する
       utils: [path.resolve(__dirname, 'src/js/utils'), 'default']
     })
   ],
@@ -89,20 +89,23 @@ module.exports = ({ outputFile, assetFile }) => ({
     splitChunks: {
       // asyncだとダイナミックインポートのみ分割する
       chunks: 'all',
+      // 最低限分割するファイルサイズ
       minSize: 0,
       cacheGroups: {
         defaultVendor: {
           // ファイル名を指定する
           name: 'vendor',
-          // ファイルを分割するディレクトリを指定
+          // ファイルを分割するディレクトリを指定する
           test: /node_modules/,
           // cacheGroupsは複数指定でき、priorityの大きいものから実行される
           priority: -10,
           reuseExistingChunk: true
         },
+        // 独自定義したモジュールファイルを分割してバンドルする
         utils: {
           name: 'utils',
-          test: /src[\\/]js[\\/]utils/,
+          test: /src[\\/]/,
+          chunks: 'initial',
           reuseExistingChunk: true
         },
         default: false
