@@ -1,5 +1,5 @@
 
-import 'js/sub';
+// import 'js/sub';
 setTimeout(() => {
   import ('@scss/app');
 }, 2000);

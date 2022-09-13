@@ -401,3 +401,23 @@ resolve: {
 
 初期表示では最低限の読み込みに限定し、重い処理に関しては非同期で読み込むことで速度を最適化させることができる
 
+## HTMLファイルが複数の場合のスクリプト自動生成について
+HTMLファイルが複数ある場合は、`HtmlWebpackPlugin`の設定を追加する
+
+```js
+new HtmlWebpackPlugin({
+  // 対象ファイル
+  template: './src/index.html',
+  // インジェクトするタグ
+  inject: 'body',
+  // インジェクトしたいchunks名を指定
+  chunks: ['app']
+}),
+new HtmlWebpackPlugin({
+  template: './src/other.html',
+  // index.html以外ならfilenameの指定が必要
+  filename: 'other.html',
+  inject: 'body',
+  chunks: ['sub']
+})
+```

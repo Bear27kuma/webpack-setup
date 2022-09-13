@@ -27,7 +27,16 @@ module.exports = () => merge(commonConf({ outputFile, assetFile }), {
       // 対象ファイル
       template: './src/index.html',
       // インジェクトするタグ
-      inject: 'body'
+      inject: 'body',
+      // インジェクトしたいchunks名を指定
+      chunks: ['app']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/other.html',
+      // index.html以外ならfilenameの指定が必要
+      filename: 'other.html',
+      inject: 'body',
+      chunks: ['sub']
     })
   ]
 });

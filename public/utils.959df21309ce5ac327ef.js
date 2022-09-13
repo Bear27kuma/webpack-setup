@@ -40,8 +40,6 @@
 /* harmony import */ var core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_set_prototype_of_js__WEBPACK_IMPORTED_MODULE_16__);
 /* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(7042);
 /* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var js_sub__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(9034);
-/* harmony import */ var js_sub__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(js_sub__WEBPACK_IMPORTED_MODULE_18__);
 /* provided dependency */ var jQuery = __webpack_require__(9755);
 /* provided dependency */ var utils = __webpack_require__(8152)["Z"];
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -70,7 +68,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
+// import 'js/sub';
 setTimeout(function () {
   __webpack_require__.e(/* import() */ 295).then(__webpack_require__.bind(__webpack_require__, 8295));
 }, 2000); // import 'regenerator-runtime';
